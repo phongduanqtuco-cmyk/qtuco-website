@@ -1,0 +1,16 @@
+{
+  "name": "antaisolar-website",
+  "version": "1.0.0",
+  "description": "Antai Solar Website",
+  "main": "index.html",
+  "scripts": {
+    "dev": "http-server -c-1 -p 8080 -o",
+    "start": "http-server -c-1 -p 8080"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "http-server": "^14.1.1"
+  }
+}
