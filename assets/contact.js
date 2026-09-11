@@ -16,19 +16,40 @@ document.addEventListener('DOMContentLoaded', function () {
     yearNode.textContent = new Date().getFullYear();
   }
 
+  const FORM_ENDPOINT = 'https://formspree.io/f/mwlkazng';
+
   if (form && status) {
+    form.action = FORM_ENDPOINT;
+    form.method = 'POST';
+
     form.addEventListener('submit', function (event) {
       event.preventDefault();
       const data = new FormData(form);
       const name = (data.get('name') || '').toString().trim();
+      const email = (data.get('email') || '').toString().trim();
 
-      if (!name) {
+      if (!name || !email) {
         status.textContent = 'Vui lòng nhập đầy đủ thông tin bắt buộc.';
         return;
       }
 
-      status.textContent = 'Yêu cầu của bạn đã được ghi nhận. Chúng tôi sẽ liên hệ lại trong thời gian sớm nhất.';
-      form.reset();
+      status.textContent = 'Đang gửi thông tin...';
+
+      fetch(FORM_ENDPOINT, {
+        method: 'POST',
+        headers: { Accept: 'application/json' },
+        body: data
+      })
+        .then(function (response) {
+          if (!response.ok) {
+            throw new Error('Send failed');
+          }
+          status.textContent = 'Yêu cầu của bạn đã được gửi thành công. Chúng tôi sẽ liên hệ lại trong thời gian sớm nhất.';
+          form.reset();
+        })
+        .catch(function () {
+          status.textContent = 'Đã xảy ra lỗi khi gửi thông tin. Vui lòng thử lại sau.';
+        });
     });
   }
 });
