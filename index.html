@@ -1562,52 +1562,37 @@ function googleTranslateElementInit() {
 <script>
     // Language switching using Google Translate mechanism
     window.changeLanguage = function(lang) {
-        console.log('=== Language change requested:', lang);
-        
-        // Map button labels to Google Translate language codes
         var langMap = {
             'english': 'en',
             'japanese': 'ja',
             'thai': 'th',
             'vietnamese': 'vi',
-            'spanish': 'es'
+            'spanish': 'es',
+            'australia': 'en'
         };
-        
-        var googleLangCode = langMap[lang] || lang;
-        
-        // Save preference to localStorage for restoration after reload
+
+        var googleLangCode = langMap[lang] || 'vi';
+
         try {
             localStorage.setItem('language', lang);
             localStorage.setItem('selectedLanguageCode', googleLangCode);
-            console.log('Saved to localStorage:', {language: lang, code: googleLangCode});
-        } catch(e) {
-            console.log('localStorage not available:', e);
+        } catch (e) {
+            console.warn('localStorage not available:', e);
         }
-        
-        // Set Google Translate cookie
+
         var cookieValue = '/vi/' + googleLangCode;
         var d = new Date();
         d.setTime(d.getTime() + (30 * 24 * 60 * 60 * 1000));
-        var expires = "expires=" + d.toUTCString();
-        document.cookie = "googtrans=" + cookieValue + "; " + expires + "; path=/";
-        
-        console.log('Cookie set:', cookieValue);
-        
-        // Try to find and trigger the Google Translate combo first (without reload)
+        document.cookie = 'googtrans=' + cookieValue + '; expires=' + d.toUTCString() + '; path=/';
+
         try {
             var comboElements = document.querySelectorAll('.goog-te-combo');
-            console.log('Found combo elements:', comboElements.length);
-            
             if (comboElements && comboElements.length > 0) {
                 for (var i = 0; i < comboElements.length; i++) {
                     var combo = comboElements[i];
                     if (combo && combo.value !== undefined) {
-                        console.log('Setting combo value to:', googleLangCode);
                         combo.value = googleLangCode;
-                        
-                        // Trigger change event multiple ways
                         if (combo.dispatchEvent) {
-                            combo.dispatchEvent(new Event('change'));
                             combo.dispatchEvent(new Event('change', { bubbles: true }));
                         }
                         if (combo.onchange) {
@@ -1615,18 +1600,16 @@ function googleTranslateElementInit() {
                         }
                     }
                 }
-                console.log('Translation triggered via combo');
-                return; // Don't reload if we successfully triggered via combo
+                return;
             }
         } catch (e) {
-            console.error('Error triggering translation via combo:', e);
+            console.warn('Google Translate combo not ready:', e);
         }
-        
-        // Fallback: reload page with delay to ensure cookie is set
-        console.log('Falling back to page reload');
+
+        // Fallback: reload the page so Google Translate can apply the selected language
         setTimeout(function() {
             window.location.reload();
-        }, 100);
+        }, 120);
     };
 </script>
 <script src="js/fix-lazy.js"></script>

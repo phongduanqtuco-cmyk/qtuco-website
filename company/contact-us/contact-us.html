@@ -122,12 +122,12 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                     <i class="iconfont f-16 mr-10 wc">&#xe662;</i>
                     <a class="word-l txt wc f-14">Tiếng Việt</a>
                     <ol class="child">
-                        <li><a href="https://qtuco.com.vn" class="f-14 wc word-b">English</a></li>
-                        <li><a href="https://qtuco.com.vn" class="f-14 wc word-b">日本語</a></li>
-                        <li><a href="https://qtuco.com.vn" class="f-14 wc word-b">Australia</a></li>
-                        <li><a href="https://qtuco.com.vn" class="f-14 wc word-b">ไทย</a></li>
-                        <li><a href="https://qtuco.com.vn" class="f-14 wc word-b">Tiếng Việt</a></li>
-                        <li><a href="https://qtuco.com.vn" class="f-14 wc word-b">Español</a></li>
+                        <li><a href="javascript:void(0)" onclick="changeLanguage('english')" class="f-14 wc word-b">English</a></li>
+                        <li><a href="javascript:void(0)" onclick="changeLanguage('japanese')" class="f-14 wc word-b">日本語</a></li>
+                        <li><a href="javascript:void(0)" onclick="changeLanguage('english')" class="f-14 wc word-b">Australia</a></li>
+                        <li><a href="javascript:void(0)" onclick="changeLanguage('thai')" class="f-14 wc word-b">ไทย</a></li>
+                        <li><a href="javascript:void(0)" onclick="changeLanguage('vietnamese')" class="f-14 wc word-b">Tiếng Việt</a></li>
+                        <li><a href="javascript:void(0)" onclick="changeLanguage('spanish')" class="f-14 wc word-b">Español</a></li>
                     </ol>
                 </li>
             </ul>
@@ -141,12 +141,12 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                 <i class="iconfont f-16 mr-10 wc">&#xe662;</i>
                 <a class="word-l txt wc f-14">Tiếng Việt</a>
                 <ol class="child">
-                    <li><a href="https://qtuco.com.vn" class="f-14 wc word-b">English</a></li>
-                    <li><a href="https://qtuco.com.vn" class="f-14 wc word-b">日本語</a></li>
-                    <li><a href="https://qtuco.com.vn" class="f-14 wc word-b">Australia</a></li>
-                    <li><a href="https://qtuco.com.vn" class="f-14 wc word-b">ไทย</a></li>
-                    <li><a href="https://qtuco.com.vn" class="f-14 wc word-b">Tiếng Việt</a></li>
-                    <li><a href="https://qtuco.com.vn" class="f-14 wc word-b">Español</a></li>
+                    <li><a href="javascript:void(0)" onclick="changeLanguage('english')" class="f-14 wc word-b">English</a></li>
+                    <li><a href="javascript:void(0)" onclick="changeLanguage('japanese')" class="f-14 wc word-b">日本語</a></li>
+                    <li><a href="javascript:void(0)" onclick="changeLanguage('english')" class="f-14 wc word-b">Australia</a></li>
+                    <li><a href="javascript:void(0)" onclick="changeLanguage('thai')" class="f-14 wc word-b">ไทย</a></li>
+                    <li><a href="javascript:void(0)" onclick="changeLanguage('vietnamese')" class="f-14 wc word-b">Tiếng Việt</a></li>
+                    <li><a href="javascript:void(0)" onclick="changeLanguage('spanish')" class="f-14 wc word-b">Español</a></li>
                 </ol>
             </div>
             <div id="app-menu">
@@ -1002,7 +1002,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                     <h3 class="word-h f-14 mc mb-20 alanFn">Theo dõi chúng tôi：</h3>
                     <div class="fxs aniBox alanGo">
 
-                                                <a class="share ani face" title="Facebook" href="https://www.facebook.com/" target="_blank" rel="noreferrer">
+                                                <a class="share ani face" title="Facebook" href="https://www.facebook.com/share/g/1Bv83gV922/" target="_blank" rel="noreferrer">
                                                     <img src="https://upload.wikimedia.org/wikipedia/commons/5/51/Facebook_f_logo_%282019%29.svg" alt="Facebook" width="22" height="22" style="display:block;">
                                                 </a>
                                                 <a class="share ani twi" title="X" href="https://x.com/" target="_blank" rel="noreferrer">
@@ -1196,11 +1196,67 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 </script>
 <script data-cfasync="false" src="../cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script></body>
 <!-- 引入多语言切换的js -->
-<script src="https://cdn.staticfile.net/translate.js/3.2.1/translate.js"></script>
+<div id="google_translate_element" style="display:none;"></div>
 <script>
-    translate.selectLanguageTag.show = false; //不出现的select的选择语言
-    translate.service.use('client.edge'); //设置机器翻译服务通道
-    // translate.execute();
+function googleTranslateElementInit() {
+  try {
+    new google.translate.TranslateElement({ pageLanguage: 'vi', layout: google.translate.TranslateElement.FloatPosition.TOP_LEFT }, 'google_translate_element');
+    setTimeout(function() {
+      var banner = document.querySelector('.goog-te-banner-frame');
+      if (banner) {
+        banner.style.display = 'none';
+        if (banner.parentNode) banner.parentNode.style.display = 'none';
+      }
+      var style = document.createElement('style');
+      style.textContent = '.goog-te-banner-frame.skiptranslate{display:none!important}.goog-te-banner-frame{display:none!important}.goog-te-gadget{display:none!important}body>div:nth-child(1){display:none!important}';
+      document.head.appendChild(style);
+    }, 300);
+  } catch (e) {
+    console.warn('Google Translate not available');
+  }
+}
+
+window.changeLanguage = function(lang) {
+    var langMap = {
+        'english': 'en',
+        'japanese': 'ja',
+        'thai': 'th',
+        'vietnamese': 'vi',
+        'spanish': 'es',
+        'australia': 'en'
+    };
+
+    var googleLangCode = langMap[lang] || 'vi';
+
+    try {
+        localStorage.setItem('language', lang);
+        localStorage.setItem('selectedLanguageCode', googleLangCode);
+    } catch (e) {}
+
+    var d = new Date();
+    d.setTime(d.getTime() + (30 * 24 * 60 * 60 * 1000));
+    document.cookie = 'googtrans=/vi/' + googleLangCode + '; expires=' + d.toUTCString() + '; path=/';
+
+    try {
+        var comboElements = document.querySelectorAll('.goog-te-combo');
+        if (comboElements && comboElements.length > 0) {
+            for (var i = 0; i < comboElements.length; i++) {
+                var combo = comboElements[i];
+                if (combo && combo.value !== undefined) {
+                    combo.value = googleLangCode;
+                    if (combo.dispatchEvent) combo.dispatchEvent(new Event('change', { bubbles: true }));
+                    if (combo.onchange) combo.onchange();
+                }
+            }
+            return;
+        }
+    } catch (e) {}
+
+    setTimeout(function() {
+        window.location.reload();
+    }, 120);
+};
 </script>
+<script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 <script type="module" src="/templates/assets/index.d9c9dbee.js"></script><script src="/templates/assets/index.091b56b7.js" nomodule="" defer=""></script>
 </html>
