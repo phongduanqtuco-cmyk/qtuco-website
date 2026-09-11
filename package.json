@@ -4,13 +4,15 @@
   "description": "Antai Solar Website",
   "main": "index.html",
   "scripts": {
-    "dev": "http-server -c-1 -p 8080 -o",
-    "start": "http-server -c-1 -p 8080"
+    "dev": "node server.js",
+    "start": "node server.js"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "devDependencies": {
-    "http-server": "^14.1.1"
+  "dependencies": {
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "nodemailer": "^6.9.14"
   }
 }
