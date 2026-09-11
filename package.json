@@ -1,18 +1,10 @@
 {
-  "name": "antaisolar-website",
+  "name": "qtuco-website",
   "version": "1.0.0",
-  "description": "Antai Solar Website",
+  "private": true,
+  "description": "QTUCO Website",
   "main": "index.html",
   "scripts": {
-    "dev": "node server.js",
-    "start": "node server.js"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "dependencies": {
-    "dotenv": "^16.4.5",
-    "express": "^4.19.2",
-    "nodemailer": "^6.9.14"
+    "start": "npx http-server -c-1 -p 8080"
   }
 }

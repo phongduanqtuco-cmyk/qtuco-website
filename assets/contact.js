@@ -16,7 +16,7 @@ document.addEventListener('DOMContentLoaded', function () {
     yearNode.textContent = new Date().getFullYear();
   }
 
-  const FORM_ENDPOINT = 'https://formspree.io/f/mwlkazng';
+  const FORM_ENDPOINT = 'https://formsubmit.co/phongduanqtuco@gmail.com';
 
   if (form && status) {
     form.action = FORM_ENDPOINT;
