@@ -279,13 +279,14 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <div class="group">
           <div class="tabBox r1Box on">
             <h2 class="f-50 word-h f-center">Liên hệ với chúng tôi</h2>
-            <form id="contact-form" class="form" action="https://formsubmit.co/phongduanqtuco@gmail.com" method="POST" accept-charset="UTF-8">
+            <form id="contact-form" class="form" action="https://api.web3forms.com/submit" method="POST" accept-charset="UTF-8">
+              <input type="hidden" name="access_key" value="88275e69-ca8d-474e-a96a-a44c2876b674">
               <input type="hidden" name="_subject" value="QTUCO - Liên hệ">
               <input type="hidden" name="_captcha" value="false">
               <input type="hidden" name="_template" value="table">
               <div class="inRow">
                 <!-- <div class="half inCol">
-                  <h3 class="f-14 gray word-l">职位</h3>
+                  <h3 class="f-14 gray word-l">Chức vụ</h3>
                   <div class="inTxt"><input name="title" class="f-16" type="text"></div>
                 </div> -->
                 <div class="half inCol">
@@ -602,7 +603,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           </div>
           <div class="tabBox r1Box">
             <h2 class="f-50 word-h f-center">Trở thành đối tác</h2>
-            <form id="partner-form" class="form" action="https://formsubmit.co/phongduanqtuco@gmail.com" method="POST" accept-charset="UTF-8">
+            <form id="partner-form" class="form" action="https://api.web3forms.com/submit" method="POST" accept-charset="UTF-8">
+              <input type="hidden" name="access_key" value="88275e69-ca8d-474e-a96a-a44c2876b674">
               <input type="hidden" name="_subject" value="QTUCO - Trở thành đối tác">
               <input type="hidden" name="_captcha" value="false">
               <input type="hidden" name="_template" value="table">
@@ -1020,21 +1022,22 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                 <div class="sendBox">
                     <h3 class="word-h f-14 mc mb-20 alanFn">Đăng ký nhận tin tức cập nhật của chúng tôi：</h3>
                     <div class="fxs aniBox alanGo">
-                        <form class="putIn fxc alanFn" data-delay=".2">
-                            <input type="text" name="email" placeholder="Your Email Address_" class="inRow f-16 word-t">
-                            <div class="layer-btn sub color addressSub">
-                                <div class="mk"></div>
-                                <span class="word-xb mr txt f-16">Đăng ký</span>
-                                <i class="iconfont f-18 bc"></i>
-                            </div>
-                        </form>
+                      <form action="https://api.web3forms.com/submit" method="POST" class="putIn fxc alanFn" data-delay=".2">
+                           <input type="hidden" name="access_key" value="88275e69-ca8d-474e-a96a-a44c2876b674">
+                           <input type="email" name="email" placeholder="Your Email Address_" class="inRow f-16 word-t" required>
+                           <button type="submit" class="layer-btn sub color addressSub" style="border: none; background: transparent; cursor: pointer;">
+                           <div class="mk"></div>
+                         <span class="word-xb mr txt f-16">Đăng ký</span>
+                        <i class="iconfont f-18 bc"></i>
+                       </button>
+                      </form>
                     </div>
                 </div>
             </div>
         </div>
         <div class="btm max-wid">
             <p class="f-12 word-l c1">Copyright ©2026 QTUCO All rights reserved</p>
-            <div class="c2 f-12"><a class="letter" href="https://qtuco.com.vn/privacy-policy">chính sách bảo mật</a><!-- <span class="line letter">|</span>IPv6 network supported --></div>
+            <div class="c2 f-12"><a class="letter" href="/privacy-policy/index.html">chính sách bảo mật</a><!-- <span class="line letter">|</span>IPv6 network supported --></div>
             <p class="f-12 word-r c3">Web Designed by MG Playmax</p>
         </div>
     </footer>
@@ -1143,7 +1146,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       }, true);
     }
 
-    const FORM_ENDPOINT = 'https://formsubmit.co/phongduanqtuco@gmail.com';
+    const FORM_ENDPOINT = 'https://api.web3forms.com/submit';
 
     document.querySelectorAll('form#contact-form, form#partner-form').forEach(function (form) {
       form.action = FORM_ENDPOINT;
