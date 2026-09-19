@@ -10,6 +10,7 @@
 #app header nav.appNav .inner_top .Solaraid .txt{max-width: 8em;line-height: 1;padding-right: .1rem;}
 .banner>.bg .img{margin-top: -10px!important;}
 #app main .rowContact .inner .form .col .inRow:nth-of-type(1){z-index: 30;}
+#newDetail .r1 .inner .mid .detail li{list-style-type: initial;}
 @media screen and (orientation : landscape){
     .app{display: none!important;}
     #app footer .mid .items>li{width: 5.4rem;}
@@ -826,43 +827,4 @@
     #noPage .banner .inner > p{font-size: 4.8vw;text-align: center;width: 80vw;margin: 0 auto;}
     #noPage .banner .inner h1{font-size: 38vw;}
     #noPage .banner .inner .set{grid-template-columns: 1fr 1fr;gap: 0 .4rem;width: 80vw;margin: 0 auto;}
-}
-#loading .svgPath {
-  transform-box: fill-box;
-  transform-origin: center center;
-}
-@media (max-width: 768px) {
-    #loading .group.loadTxt {
-        width: 240px !important;
-    }
-}
-.loading-logo {
-    display: block !important;
-    width: 100% !important;
-    height: auto !important;
-    max-width: none !important;
-
-    opacity: 0;
-
-    animation: logoAppear 1.8s cubic-bezier(.16,1,.3,1) forwards;
-    animation-delay: 0.4s;
-}
-
-@keyframes logoAppear {
-    0% {
-        opacity: 0;
-        transform: translateY(40px) scale(0.9);
-        filter: blur(10px);
-    }
-
-    50% {
-        opacity: 1;
-        filter: blur(0);
-    }
-
-    100% {
-        opacity: 1;
-        transform: translateY(0) scale(1);
-        filter: blur(0);
-    }
 }
