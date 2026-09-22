@@ -339,7 +339,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                                         <video class="media bannerMedia" src="upfiles/onepage/12VSVPMSHQVN.mp4"
                               autoplay
                               muted
-                              loop
+                              
                               playsinline
                               preload="auto"> </video>
                     <section class="app bannerMediaApp" data-src="/templates/assets/home/v.ts?v=1"></section>
@@ -1533,6 +1533,80 @@ function googleTranslateElementInit() {
     console.log('Google Translate not available');
   }
 }
+</script>
+<script>
+    (function () {
+        var mobileViewport = window.matchMedia && window.matchMedia('(max-width: 768px)').matches;
+
+        function hydrateVideo(video) {
+            if (!video || video.dataset.lazyBound === '1') return;
+
+            var src = video.dataset.src || video.getAttribute('src');
+            if (!src) return;
+
+            video.dataset.lazyBound = '1';
+
+            if (!video.classList.contains('bannerMedia')) {
+                video.removeAttribute('autoplay');
+            }
+
+            video.setAttribute('preload', 'metadata');
+            video.setAttribute('playsinline', '');
+            video.setAttribute('muted', '');
+            video.muted = true;
+            video.playsInline = true;
+
+            if (!video.dataset.src) {
+                video.dataset.src = src;
+            }
+
+            if (video.getAttribute('src')) {
+                video.removeAttribute('src');
+            }
+
+            function loadVideo() {
+                if (video.dataset.loaded === '1') return;
+                video.dataset.loaded = '1';
+                video.setAttribute('src', video.dataset.src);
+                video.load();
+
+                if (video.classList.contains('bannerMedia') || video.getAttribute('data-autoplay') === '1') {
+                    try {
+                        video.play().catch(function () {});
+                    } catch (e) {}
+                }
+            }
+
+            if (!mobileViewport || video.classList.contains('bannerMedia')) {
+                loadVideo();
+                return;
+            }
+
+            if (!('IntersectionObserver' in window)) {
+                loadVideo();
+                return;
+            }
+
+            var observer = new IntersectionObserver(function (entries, obs) {
+                entries.forEach(function (entry) {
+                    if (entry.isIntersecting) {
+                        loadVideo();
+                        obs.unobserve(video);
+                    }
+                });
+            }, {
+                rootMargin: '200px 0px',
+                threshold: 0.01
+            });
+
+            observer.observe(video);
+        }
+
+        var videos = document.querySelectorAll('video[data-src], video.pin-video, video.media');
+        videos.forEach(function (video) {
+            hydrateVideo(video);
+        });
+    })();
 </script>
 <script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 
